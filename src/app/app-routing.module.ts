@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core'
 import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
+import { NativeScriptCommonModule } from '@nativescript/angular';
 
-const rutas: Routes = [
+
+
+const routes: Routes = [
   { path: "", redirectTo: "/inicio", pathMatch: "full" },
   { path: "ingresar", loadChildren: () => import('./paginas/ingresar/ingresar.module').then(m => m.IngresarModule) },
   { path: "registrarse", loadChildren: () => import('./paginas/registrarse/registrarse.module').then(m => m.RegistrarseModule) },
@@ -11,7 +14,7 @@ const rutas: Routes = [
 ];
 
 @NgModule({
-  imports: [NativeScriptRouterModule.forRoot(rutas)],
+  imports: [NativeScriptCommonModule, NativeScriptRouterModule.forRoot(routes)],
   exports: [NativeScriptRouterModule],
 })
 
